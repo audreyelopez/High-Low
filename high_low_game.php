@@ -2,7 +2,8 @@
 
 $random_number = mt_rand(1, 100);
 
-	if ($argc == 3) {
+	if ($argc == 3) { 
+		$random_number = mt_rand($argv[1] , $argv[2]);
 		echo "The answer is between {$argv[1]} and {$argv[2]}\n";
 		
 		fwrite(STDOUT, "Guess!");
@@ -12,11 +13,12 @@ $random_number = mt_rand(1, 100);
 
 
 
-
+$times_guessed = 0;
 
 do {
 	// prompt
 	$guess = trim(fgets(STDIN));
+    $times_guessed++; 
 
 	if($guess > $random_number) {
 		fwrite(STDOUT, "Nope, Guess Lower!");
@@ -27,7 +29,7 @@ do {
     }
 
 	else  {
-		fwrite(STDOUT, "YOU WIN, YOU BEAUTIFUL GUESSER!!");
+		fwrite(STDOUT, "YOU WIN, YOU BEAUTIFUL GUESSER!!\nYou guessed my number in $times_guessed times!!");
 	}
 
 
